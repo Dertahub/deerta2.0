@@ -1,0 +1,169 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Cate_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cate_id" data-rule="required" data-order-by="weigh desc" data-source="keerta/goodscate/index" class="form-control selectpage" name="row[cate_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-type_id" data-rule="required" data-order-by="weigh desc" data-source="keerta/goodstype/index" class="form-control selectpage" name="row[type_id]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Goods_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-goods_name" data-rule="required" class="form-control" name="row[goods_name]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('轮播图')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-images" data-rule="required" class="form-control" size="50" name="row[images]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-images" class="btn btn-danger faupload" data-input-id="c-images" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="true" data-preview-id="p-images"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-images" class="btn btn-primary fachoose" data-input-id="c-images" data-mimetype="image/*" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-images"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-images"></ul>
+            <small class="form-text text-muted">建议尺寸：750px，高度不限（可以是320px）</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Total_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-total_amount" data-rule="required" class="form-control" name="row[total_amount]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Limit_num')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-limit_num" data-rule="required" class="form-control" name="row[limit_num]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_amount" data-rule="required" class="form-control" name="row[start_amount]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_cycle')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-start_cycle" data-rule="required" class="form-control" name="row[start_cycle]" type="number" value="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Bouns_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-bouns_rate" data-rule="required" class="form-control" step="0.01" name="row[bouns_rate]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Red_envelope_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-red_envelope_amount" data-rule="required" class="form-control" step="0.01" name="row[red_envelope_amount]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Day_profit_rate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-day_profit_rate" data-rule="required" class="form-control" step="0.01" name="row[day_profit_rate]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Single_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-single_amount" class="form-control" name="row[single_amount]" type="number">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Level_ids')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-level_ids" data-order-by="id" data-rule="required" data-field="level_name" data-source="keerta/level/level/index" data-multiple="true" class="form-control selectpage" name="row[level_ids]" type="text" value="">
+            <small class="form-text text-danger">可多选，只有勾选的等级才能参与购买！</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Kpis_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-kpis_image" class="form-control" size="50" name="row[kpis_image]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-kpis_image" class="btn btn-danger faupload" data-input-id="c-kpis_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-kpis_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-kpis_image" class="btn btn-primary fachoose" data-input-id="c-kpis_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-kpis_image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-kpis_image"></ul>
+            <small class="form-text text-muted">建议尺寸：750px，高度不限，圆角弧度10px，png透明背景</small>
+        </div>
+    </div>
+    <!--<div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Surplus_amount')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-surplus_amount" class="form-control" name="row[surplus_amount]" type="number" value="">
+        </div>
+    </div>-->
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Guarantee_company_image')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-guarantee_company_image" class="form-control" size="50" name="row[guarantee_company_image]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-guarantee_company_image" class="btn btn-danger faupload" data-input-id="c-guarantee_company_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-guarantee_company_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-guarantee_company_image" class="btn btn-primary fachoose" data-input-id="c-guarantee_company_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-guarantee_company_image"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-guarantee_company_image"></ul>
+            <small class="form-text text-muted">建议尺寸：750px，高度不限（可以是200px），圆角弧度10px，png透明背景</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Interest_days')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-interest_days" data-rule="required" class="form-control" name="row[interest_days]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_hot')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_hot" class="form-control selectpicker" name="row[is_hot]">
+                {foreach name="isHotList" item="vo"}
+                    <option value="{$key}" {in name="key" value="0"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Switch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-switch" class="form-control selectpicker" name="row[switch]">
+                {foreach name="switchList" item="vo"}
+                    <option value="{$key}" {in name="key" value="1"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-weigh" class="form-control" name="row[weigh]" type="number">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,7 @@
+{
+    "name": "wonderful-code/kefu",
+    "homepage": "https://www.fastadmin.net/store/kefu.html",
+    "require": {
+        "workerman/gateway-worker": ">=3.0.0"
+    }
+}

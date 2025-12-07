@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{$title|default=''}</title>
+    <!-- Bootstrap Core CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <!-- Custom CSS -->
+    <!--        <link href="__ADDON__/css/common.css" rel="stylesheet">-->
+
+
+    <link rel="shortcut icon" href="__CDN__/assets/img/favicon.ico" />
+    <link href="__CDN__/assets/css/frontend{$Think.config.app_debug?'':'.min'}.css?v={$Think.config.site.version}" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="__CDN__/assets/libs/fastadmin-layer/dist/layer.js"></script>
+    <script src="__CDN__/assets/libs/nice-validator/dist/jquery.validator.js"></script>
+    <script src="__ADDON__/js/jSignature.min.js"></script>
+</head>
+
+<body style="padding-top: 0px">
+<main class="content">
+    {__CONTENT__}
+</main>
+<!-- /.container -->
+</body>
+
+</html>

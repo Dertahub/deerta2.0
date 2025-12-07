@@ -1,0 +1,105 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-content" class="form-control editor" rows="5" name="row[content]" cols="500" style="height: 500px"></textarea>
+            <div class="alert alert-warning-light " >
+                {:__('ContentTip')}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('SignatureConfig')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <dl class="fieldlist" data-name="row[signature]">
+                <dd>
+                    <ins>{:__('SignatureKey')}</ins>
+                    <ins>{:__('SignatureValue')}</ins>
+                </dd>
+                <dd>
+                    <a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i> 追加</a>
+                </dd>
+                <textarea name="row[signature]" class="form-control hide" cols="30" rows="5"></textarea>
+            </dl>
+            <div class="alert alert-warning-light " >
+                {:__('SignatureTip')}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('JumpType')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select class="form-control" name="row[jump_type]">
+                <option value="1">当前协议</option>
+                <option value="2">指定链接</option>
+                <option value="3">展示pdf</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('JumpUrl')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-jump_url" data-rule="" class="form-control" name="row[jump_url]" type="text" value="">
+            <div class="alert alert-warning-light " >
+                {:__('JumpUrlTip')}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('OfficialSealImage')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-official_seal_image" data-rule="" class="form-control" size="50" name="row[official_seal_image]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-official_seal_image" class="btn btn-danger plupload" data-input-id="c-official_seal_image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-official_seal_image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-official_seal_image" class="btn btn-primary fachoose" data-input-id="c-official_seal_image" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-official_seal_image"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-official_seal_image"></ul>
+            <div class="alert alert-warning-light " >
+                {:__('OfficialSealImageTip')}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('checkLogin')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::switcher('row[check_login]', 0, []) }
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('checkRepeat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            {:Form::switcher('row[check_repeat]', 0, []) }
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-description" data-rule="" class="form-control" name="row[description]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Weigh')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-weigh" data-rule="required" class="form-control" name="row[weigh]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+location ~* (runtime|application)/{
+	return 403;
+}
+location / {
+	if (!-e $request_filename){
+		rewrite  ^(.*)$  /index.php?s=$1  last;   break;
+	}
+}
+location ~ ^/(uploads|assets)/.*\.(php|php5|jsp)$ {
+    deny all;
+} 

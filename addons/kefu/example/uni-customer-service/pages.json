@@ -1,0 +1,161 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+		    "path" : "pages/session/session",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "消息",
+		        "enablePullDownRefresh": true
+		    }
+		},
+		{
+            "path" : "pages/user/user",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "个人中心",
+                "enablePullDownRefresh": true
+            }
+        },
+		{
+            "path" : "pages/user/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/message/message",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息",
+                "enablePullDownRefresh": false,
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "black"
+            }
+        },
+		{
+            "path" : "pages/address-list/address-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "通讯录",
+                "enablePullDownRefresh": true
+            }
+        },
+		{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜素",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/user/info",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "查看资料",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#f8f8f8"
+            }
+        },
+		{
+            "path" : "pages/address-list/collapse-recently",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "最近沟通",
+                "enablePullDownRefresh": true
+            }
+        },
+		{
+            "path" : "pages/session/info",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "会话设置",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/user/quick-reply",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "快捷回复",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/user/report",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "反馈问题",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/user/edit-quick-reply",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "编辑快捷回复",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/user/edit-info",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "编辑资料",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/user/blacklist",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "黑名单管理",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+            "path" : "pages/session/trajectory",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户轨迹",
+                "enablePullDownRefresh": false
+            }
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+	    "color": "#b2b2b2",
+	    "selectedColor": "#31a4f9",
+	    "borderStyle": "white",
+	    "backgroundColor": "#ffffff",
+	    "list": [
+			{
+			    "pagePath": "pages/session/session",
+			    "iconPath": "static/icon/session.png",
+			    "selectedIconPath": "static/icon/session-selected.png",
+			    "text": "消息"
+			},
+			{
+			    "pagePath": "pages/address-list/address-list",
+			    "iconPath": "static/icon/address-list.png",
+			    "selectedIconPath": "static/icon/address-list-selected.png",
+			    "text": "通讯录"
+			},
+			{
+	        "pagePath": "pages/user/user",
+	        "iconPath": "static/icon/user.png",
+	        "selectedIconPath": "static/icon/user-selected.png",
+	        "text": "我"
+	    }]
+	}
+}

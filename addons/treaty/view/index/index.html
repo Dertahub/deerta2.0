@@ -1,0 +1,168 @@
+<style>
+    .treary_box{}
+    .treary_name{font-size: 25px;text-align: center}
+    .treary_content{margin-top: 20px}
+    .treary_content img{max-width: 100%!important;}
+    .form_tip{font-size: 20px;text-align: center;color: red}
+    .my_form{margin-top: 15px}
+    .signature_tip{text-align: center;font-weight: bold;font-size: 18px}
+    .signature{background-color: #eeeeee;margin: 20px auto}
+    .signature_but_box{margin: 20px;height: 25px;}
+    .signature_but{height: 25px;width: 50%;float: left;}
+    .img_box{max-width: 95%;display: block;margin: 0 auto}
+    .n-default .msg-wrap{position: relative;}
+    /*.login-section{min-height: 550px}*/
+    .popupBox{background: rgba(0, 0, 0, 0.3);position: fixed;top: 0;bottom: 0;right: 0;left: 0;display: none;justify-content: center;align-items: center;}
+    .popup{background: #fff;border-radius: 10px;overflow: hidden;}
+    .btnBox{height: 50px;display: flex;font-size: 22px;align-items: center;}
+    .btnBox div{flex: 1;text-align: center;}
+    .signature_img{height: 40px;width: 80px;border-style: dashed;  border-width: 1px;border-color: red;}
+</style>
+<div id="content-container" class="container">
+    <div class="user-section login-section">
+        <div class="logon-tab clearfix">  </div>
+        <div class="login-main">
+            <div class="treary_box">
+                <div class="treary_item treary_name">
+                    {$treaty_info.name?:"没有名称"}
+                </div>
+                <div class="treary_item treary_content">
+                    {$treaty_info.content?:"没有内容"}
+                </div>
+            </div>
+            <div class="popupBox">
+                <div class="popup">
+                    <div id="signature" class="signature" ></div>
+                    <!--                    <canvas id="signName" width="500" height="250">-->
+                    <!--                        您的浏览器当前不支持canvas画布，请更换别的浏览器进行签名操作-->
+                    <!--                    </canvas>-->
+                    <div class="btnBox">
+                        <div id="createImage">确定</div>
+                        <div id="clearCanvas">取消</div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div >
+                {:token()}
+                <input type="hidden" name="category_id" id="category_id" value="{$treaty_info.id}" />
+                <input type="hidden" name="image" id="image" value="" />
+                <div class="form-group">
+                    <button class="btn btn-primary btn-lg btn-block btn-submit">{:__('提交')}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__ADDON__/js/index.js"></script>
+<script>
+
+    $(document).ready(function(){
+        var index = 0;
+        var images = [];
+        var tag_name = '';
+        console.log("初始化",images);
+        //初始化签名样式
+        var arguments = {
+            width: '400px',
+            height: '250px',
+            cssclass: 'signature',
+            signatureLine: false,//去除默认画布上那条横线
+            lineWidth: '5',
+        };
+        $("#signature").jSignature(arguments);
+
+
+        //清除重写
+        $('#clearCanvas').on('click',function(){
+            $("#signature").jSignature("reset");
+            //清除重写调用方式
+            // $('#signName').clearSignature();
+            $('.popupBox').css('display' , 'none')
+        });
+        //点击唤起签名
+        $('.signClass' ).on('click', function(e) {
+            tag_name = e.currentTarget.dataset.tag_name;//每个签名的标志
+            index = $(this).index()
+            $('.popupBox').css('display' , 'flex')
+        })
+        //确认按钮
+        $('#createImage').on('click',function(){
+            // console.log(tag_name)
+            //标准格式但是base64会被tp框架过滤，所不校验，但是jSignature默认是使用png
+            var datapair = $("#signature").jSignature("getData", "image");
+            var i = new Image();
+            i.src = "data:" + datapair[0] + "," + datapair[1];
+            i.image = datapair[1];
+            $.ajax({
+                url: "/addons/treaty/index/upload",
+                data: {'image_data':encodeURIComponent(i.src)},
+                type: "post",
+                success: function (res) {
+                    if (res.code == 1) {
+                        layer.msg(res.msg);
+                        // console.log("tag_name",tag_name);
+                        // console.log("开始",images);
+                        var is_replace = 0;
+                        $.each(images, function (index, item) {
+                            if(item['name'] == tag_name){
+                                images[index] = {name:tag_name,url:res.data.url};
+                                is_replace = 1
+                            }
+                        })
+                        if(!is_replace){
+                            images.push({name:tag_name,url:res.data.url});
+                        }
+                        // console.log("结束",images);
+                        $('#newImage').attr('src',res.data.url);
+                        var className = ".sign_"+tag_name
+                        $(className).html(' <img  class="signature_img" src="' +res.data.url  + '" />')
+                        $("#signature").jSignature("reset");
+                        $('.popupBox').css('display' , 'none')
+                    } else {
+                        layer.msg(res.msg);
+                    }
+                }
+            });
+        });
+
+
+
+        $(".btn-submit").click(function () {
+            var category_id = $("#category_id").val();
+            var token = $("input[name='__token__']").val();
+            $.ajax({
+                url: "/addons/treaty/index/index",
+                data: {__token__:token,images:images,category_id:category_id},
+                type: "post",
+                success: function (res) {
+                    if (res.code == 1) {
+                        layer.msg(res.msg);
+                        setTimeout(function () {
+                            window.location.href=res.url;
+                        },1000)
+
+                    } else {
+                        $("input[name='__token__']").val(res.data.token)
+                        layer.msg(res.msg);
+                        return false;
+                    }
+                }
+            })
+        });
+
+
+        $("img").click(function () {
+            var src = $(this).attr("src");
+            layer.open({
+                type: 1,
+                title: false,
+                closeBtn: 1,
+                shadeClose: false,
+                skin: 'img_box',
+                content: '<img style="display: block;margin: 0 auto;max-width: 85%" src="'+$(this).attr("src")+'">'
+            });
+        });
+    });
+</script>
+

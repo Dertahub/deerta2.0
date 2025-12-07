@@ -1,0 +1,84 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Switch')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-switch" class="form-control selectpicker" name="row[switch]">
+                {foreach name="switchList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.switch"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Fee')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-fee" class="form-control" step="0.1" name="row[fee]" type="number" value="{$row.fee|htmlentities}">
+                <span class="input-group-addon">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Multiple')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-multiple" class="form-control" name="row[multiple]" type="number" value="{$row.multiple|htmlentities}">
+                <span class="input-group-addon">的倍数</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Start_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-start_time" class="form-control datetimepicker" data-date-format="HH" data-use-current="true" name="row[start_time]" type="text" value="{:$row.start_time}">
+                <span class="input-group-addon">点</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('End_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-end_time" class="form-control datetimepicker" data-date-format="HH" data-use-current="true" name="row[end_time]" type="text" value="{:$row.end_time}">
+                <span class="input-group-addon">点</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Min')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-min" class="form-control" name="row[min]" type="number" value="{$row.min|htmlentities}">
+                <span class="input-group-addon">元/U</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Max')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-max" class="form-control" name="row[max]" type="number" value="{$row.max|htmlentities}">
+                <span class="input-group-addon">元/U</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('每天可提现次数')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-num" class="form-control" name="row[num]" type="number" value="{$row.num|htmlentities}">
+                <span class="input-group-addon">次</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+        </div>
+    </div>
+</form>

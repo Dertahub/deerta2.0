@@ -1,0 +1,81 @@
+.edui-table-wrapper {
+    font-size: 12px;
+    color: #333;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.edui-table-panel {
+}
+
+.edui-table-title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 10px;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #ddd;
+    margin: 0;
+}
+
+.edui-table-create, .edui-table-edit {
+    padding: 10px;
+}
+
+.edui-table-dimension {
+}
+
+.edui-table-dimension-info {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.edui-table-dimension-select {
+    width: 270px;
+    height: 270px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+
+    gap: 1px;
+    background: #ddd;
+    border: 1px solid #ddd;
+}
+
+.edui-table-cell {
+    /*width: 25px;*/
+    /*height: 25px;*/
+    cursor: pointer;
+    background: #fff;
+}
+
+.edui-table-cell-selected {
+    background-color: #d5e1f2;
+    border-color: #c7d8f1;
+}
+
+.edui-formula-clearboth {
+    clear: both;
+}
+
+.edui-table-context-menu {
+    position: absolute;
+    z-index: 9999;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(204, 204, 204);
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    min-width: 120px;
+    left: 1094px;
+    top: 599px;
+    padding: 5px;
+}
+
+.edui-table-menu-item {
+    line-height: 22px;
+    padding: 5px 8px;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.edui-table-menu-item:hover {
+    cursor: pointer;
+    background-color: #f7f7f7;
+}
