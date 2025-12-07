@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\controller\xy;
+namespace app\api\controller\deerta;
 
 use app\admin\model\treaty\Category;
 use app\common\controller\Api;

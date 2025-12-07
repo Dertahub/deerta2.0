@@ -1,14 +1,16 @@
 <?php
 
-namespace app\api\controller\xy;
+namespace app\api\controller\deerta;
 
 use app\common\controller\Api;
 use think\Config;
 
-class Noticecate extends Api
+class Line extends Api
 {
     protected $noNeedLogin = ['*'];
     protected $noNeedRight = ['*'];
+    protected $model = null;
+
     public function _initialize()
     {
         parent::_initialize();
@@ -17,27 +19,22 @@ class Noticecate extends Api
             $this->error(__('User center already closed'));
         }
 
-        $this->model = new \app\admin\model\keerta\Noticecate();
+        $this->model = new \app\admin\model\keerta\Line;
     }
-
     /**
-     * 资讯分类列表
+     * 获取线路列表
+     *
      */
     public function index()
     {
-        $is_recommend = $this->request->get('is_recommend', 0, 'int');
-        if ($is_recommend){
-            $this->model->where('home', 1);
-        }
         $list = $this->model->where('switch', 1)
-            ->field('id,title,image')
-            ->cache(true, 60)
+            ->field('id,server_name,line_name,logo,domain')
+            ->cache('line', 3600)
             ->select();
-
         foreach ($list as &$item){
-            $item['image'] = $item['image'] ? cdnurl($item['image'], true) : '';
+            $item['logo'] = cdnurl($item['logo'],  true);
         }
-
         $this->success('获取成功', $list);
     }
+
 }

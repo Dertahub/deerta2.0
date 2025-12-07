@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\controller\xy;
+namespace app\api\controller\deerta;
 
 use app\admin\model\keerta\recharge\Money;
 use app\admin\model\keerta\recharge\Usdt;

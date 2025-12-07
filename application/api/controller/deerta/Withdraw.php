@@ -1,6 +1,6 @@
 <?php
 
-namespace app\api\controller\xy;
+namespace app\api\controller\deerta;
 
 use app\admin\model\keerta\withdraw\Cny;
 use app\admin\model\keerta\withdraw\Setting;
