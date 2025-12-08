@@ -25,7 +25,9 @@ class Sign extends Api
         if($user['realname_status'] != 2){
             $this->error('请先完成实名认证！');
         }
-        $realname = \app\admin\model\keerta\Realname::where('user_id', $user['id'])->find();
+        $realname = \app\admin\model\keerta\Realname::where('user_id', $user['id'])
+            ->order('id desc')
+            ->find();
         if(!$realname){
             $this->error('请先完成实名认证。');
         }

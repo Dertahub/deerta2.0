@@ -256,7 +256,7 @@ class Order extends Api
             throw new Exception("该协议不存在");
         }
 
-        $realname = \app\admin\model\keerta\Realname::where('user_id', $order['user_id'])->find();
+        $realname = \app\admin\model\keerta\Realname::where('user_id', $order['user_id'])->order('id desc')->find();
         if (!$realname){
             throw new Exception("用户信息不存在");
         }
@@ -337,7 +337,7 @@ class Order extends Api
         if($user['realname_status'] != 2){
             throw new Exception('请先完成实名认证！');
         }
-        $realname = \app\admin\model\keerta\Realname::where('user_id', $user['id'])->find();
+        $realname = \app\admin\model\keerta\Realname::where('user_id', $user['id'])->order('id desc')->find();
         if(!$realname){
             throw new Exception('请先完成实名认证！');
         }

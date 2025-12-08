@@ -1,10 +1,10 @@
 <?php
 
 return array (
-  'name' => '吉尼斯盛投',
+  'name' => '鼎亚资本',
   'beian' => '',
   'cdnurl' => '',
-  'version' => '1.0.11',
+  'version' => '1.0.5',
   'timezone' => 'Asia/Shanghai',
   'forbiddenip' => '',
   'languages' => 
@@ -38,4 +38,6 @@ return array (
     'category2' => '分类二',
     'custom' => '自定义',
   ),
+  'appid' => 'wx',
+  'appsecret' => 'appsecret',
 );

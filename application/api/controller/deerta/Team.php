@@ -108,6 +108,7 @@ class Team extends Api
             ->field('id')
             ->paginate($limit)->each(function (&$item){
                 $item['surname'] = \app\admin\model\keerta\Realname::where('user_id', $item['id'])
+                    ->order('id desc')
                     ->cache(true, 60)
                     ->value('surname');
                 $item['total_recharge'] = MoneyLog::where('user_id', $item['id'])

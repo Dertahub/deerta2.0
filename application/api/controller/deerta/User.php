@@ -34,7 +34,7 @@ class User extends Api
             $this->error('等级信息不存在'.$userinfo['userinfo']['level_id']);
         }
         if($userinfo['userinfo']['realname_status'] == 2){
-            $userinfo['userinfo']['realname'] = \app\admin\model\keerta\Realname::where('user_id', $this->auth->id)->value('surname') ?? '';
+            $userinfo['userinfo']['realname'] = \app\admin\model\keerta\Realname::where('user_id', $this->auth->id)->order('id desc')->value('surname') ?? '';
         }else{
             $userinfo['userinfo']['realname'] = '';
         }
