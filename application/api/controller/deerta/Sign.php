@@ -22,6 +22,13 @@ class Sign extends Api
         $userId = $this->auth->id;
         $user = $this->auth->getUser();
 
+        $date = date('Ymd');
+        $cacheKey = 'user_sign_'.$date.'_'.$userId;
+        $cache = Cache::get($cacheKey);
+        if ($cache) {
+            $this->error('今天已经签到过了!!');
+        }
+
         if($user['realname_status'] != 2){
             $this->error('请先完成实名认证！');
         }
@@ -34,13 +41,13 @@ class Sign extends Api
         if($realname['status'] != 1){
             $this->error('请先完成实名认证！');
         }
-
-        $date = date('Ymd');
-        $cacheKey = 'user_sign_'.$date.'_'.$userId;
-        $cache = Cache::get($cacheKey);
-        if ($cache) {
-            $this->error('今天已经签到过了!!');
+        // 判断是否购买过产品
+        $order = \app\admin\model\keerta\order\Order::where('user_id', $userId)
+            ->find();
+        if(!$order){
+            $this->error('请先购买产品,才可进行签到！');
         }
+
         $sign = Signin::where('user_id', $userId)
             ->whereTime('createtime', 'today')
             ->find();
