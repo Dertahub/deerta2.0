@@ -120,6 +120,7 @@ class Realname extends Backend
                 $config = \app\admin\model\keerta\Realnamesetting::where('id',1)->find();
                 if($config){
                     if($config['red'] > 0){
+                        lock('user_realname_success_'.$row['user_id'], '', 10800);
                         MoneyLog::money($row['user_id'], $config['red'], 12, 'money', $row['id'],'实名认证通过送红包');
                     }
                 }
