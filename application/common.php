@@ -525,7 +525,7 @@ if (!function_exists('lock')) {
     function lock($key, $msg = "", $expire = 3)
     {
         if(empty($msg)){
-            $msg = __('Do not operate frequently');
+            $msg = __('请勿频繁操作');
         }
         $lock = Cache::get($key);
         if ($lock) {

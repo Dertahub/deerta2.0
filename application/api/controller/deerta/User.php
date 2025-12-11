@@ -55,9 +55,10 @@ class User extends Api
      */
     public function mobileRegister()
     {
-        lock('mobileRegister');
         $param = ['mobile','password','confirm_password','pay_password','confirm_pay_password','invite_code','device_id','country_code'];
         $this->paramValidate($param);
+
+        lock('mobileRegister' . $this->params['mobile']);
 
         // 规则验证
         try {
@@ -101,9 +102,9 @@ class User extends Api
      */
     public function emailRegister()
     {
-        lock('emailRegister');
         $param = ['email','password','pay_password','confirm_password','confirm_pay_password','invite_code','device_id'];
         $this->paramValidate($param);
+        lock('emailRegister' . $this->params['email']);
 
         // 规则验证
         try {
