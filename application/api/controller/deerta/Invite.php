@@ -19,6 +19,12 @@ class Invite extends Api
         if($user['realname_status'] != 2){
             $this->error('请先完成实名认证');
         }
+        $realname = \app\admin\model\keerta\Realname::where('user_id', $user['id'])
+            ->where('status', 1)
+            ->find();
+        if(!$realname){
+            $this->error('请先完成实名认证！');
+        }
         if($user['self_invest_money'] == 0){
             $this->error('暂无邀请权限');
         }

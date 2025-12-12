@@ -337,12 +337,11 @@ class Order extends Api
         if($user['realname_status'] != 2){
             throw new Exception('请先完成实名认证！');
         }
-        $realname = \app\admin\model\keerta\Realname::where('user_id', $user['id'])->order('id desc')->find();
+        $realname = \app\admin\model\keerta\Realname::where('user_id', $user['id'])
+            ->where('status', 1)
+            ->find();
         if(!$realname){
-            throw new Exception('请先完成实名认证！');
-        }
-        if($realname['status'] != 1){
-            throw new Exception('请先完成实名认证！');
+            $this->error('请先完成实名认证！');
         }
         $pay_password = $this->request->param('pay_password', '', 'trim');
         if ($user->pay_password != (new Auth)->getEncryptPassword($pay_password, $user->salt)) {
