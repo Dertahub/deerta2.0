@@ -199,16 +199,27 @@
     </div>
     <!-- 平台提现金额统计 -->
     <div class="navbar-withdrawal-stats">
-        <span class="withdrawal-text">充值待审核(CNY)：</span>
-        <span class="withdrawal-amount">({$homeDate.recharge_money|default=0})</span>
-        <span class="withdrawal-text">充值待审核(USDT)：</span>
-        <span class="withdrawal-amount">({$homeDate.recharge_usdt|default=0})</span>
-        <span class="withdrawal-text">提现待审核(CNY)：</span>
-        <span class="withdrawal-amount">({$homeDate.withdraw_money|default=0})</span>
-        <span class="withdrawal-text">提现待审核(USDT)：</span>
-        <span class="withdrawal-amount">({$homeDate.withdraw_usdt|default=0})</span>
-        <span class="withdrawal-text">实名认证待审核：</span>
-        <span class="withdrawal-amount">({$homeDate.realname|default=0})</span>
+        <a href="{:url('keerta/recharge/money?ref=addtabs')}" class="btn-back-home" style="color:white" target="_parent">
+            <span class="withdrawal-text">充值待审核(CNY)：</span>
+            <span class="withdrawal-amount">({$homeDate.recharge_money|default=0})</span>
+
+        </a>
+        <a href="{:url('keerta/recharge/usdt?ref=addtabs')}" class="btn-back-home"  style="color:white"target="_parent">
+            <span class="withdrawal-text">充值待审核(USDT)：</span>
+            <span class="withdrawal-amount">({$homeDate.recharge_usdt|default=0})</span>
+        </a>
+        <a href="{:url('keerta/withdraw/cny?ref=addtabs')}" class="btn-back-home" style="color:white" target="_parent">
+            <span class="withdrawal-text">提现待审核(CNY)：</span>
+            <span class="withdrawal-amount">({$homeDate.withdraw_money|default=0})</span>
+        </a>
+        <a href="{:url('keerta/withdraw/usdt?ref=addtabs')}" class="btn-back-home" style="color:white" target="_parent">
+            <span class="withdrawal-text">提现待审核(USDT)：</span>
+            <span class="withdrawal-amount">({$homeDate.withdraw_usdt|default=0})</span>
+        </a>
+        <a href="{:url('keerta/realname?ref=addtabs')}" class="btn-back-home" style="color:white" target="_parent">
+            <span class="withdrawal-text">实名认证待审核：</span>
+            <span class="withdrawal-amount">({$homeDate.realname|default=0})</span>
+        </a>
     </div>
 
     {if $Think.config.fastadmin.multiplenav}
