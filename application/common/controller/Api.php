@@ -180,9 +180,9 @@ class Api
         if (!$timestamp || !$nonce || !$sign){
             $this->error(__('签名参数错误'));
         }
-        if (abs($timestamp - time()) > 6) {
+        /*if (abs($timestamp - time()) > 6) {
             $this->error(__('签名超时') . abs($timestamp - time()));
-        }
+        }*/
         // 防止重复请求
         if(Cache::has($sign)){
             $this->error(__('签名过期'));
@@ -206,7 +206,7 @@ class Api
             write_log('ip：'. request()->ip() .'签名校验失败：' . $stringToSign.',sign：'.$serverSign, 'sign/failed');
             $this->error(__('签名校验失败'));
         }
-        Cache::set($sign, 1, 10);
+        Cache::set($sign, 1, 300);
     }
     /**
      * 加载语言文件
