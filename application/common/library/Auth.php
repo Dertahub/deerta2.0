@@ -254,7 +254,7 @@ class Auth
         $field = Validate::is($account, 'email') ? 'email' : 'mobile';
         $user = User::get([$field => $account]);
         if (!$user) {
-            $this->setError('Account is incorrect');
+            $this->setError('账号错误');
             return false;
         }
         if ($field == 'mobile'){
@@ -266,18 +266,18 @@ class Auth
         }
 
         if ($user->status != 'normal') {
-            $this->setError('Account is locked');
+            $this->setError('账号被锁定');
             return false;
         }
 
         if ($user->loginfailure >= 5 && time() - $user->loginfailuretime < 86400) {
-            $this->setError('Please try again after 1 day');
+            $this->setError('密码错误次数过多账号锁定,请1天后再登录');
             return false;
         }
 
         if ($user->password != $this->getEncryptPassword($password, $user->salt)) {
             $user->save(['loginfailure' => $user->loginfailure + 1, 'loginfailuretime' => time()]);
-            $this->setError('Password is incorrect');
+            $this->setError('密码错误');
             return false;
         }
 

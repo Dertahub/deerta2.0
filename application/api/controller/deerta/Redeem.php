@@ -32,7 +32,7 @@ class Redeem extends Api
         if ($user->pay_password != (new Auth)->getEncryptPassword($pay_password, $user->salt)) {
             $this->error('支付密码错误！');
         }
-        lock('user_cnyToUsdt_'.$user->id, 10);
+        lock('user_cnyToUsdt_'.$user->id,'',10);
         if ($user->$type < $cny){
             $this->error('您的余额不足！');
         }
