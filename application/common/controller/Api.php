@@ -163,6 +163,7 @@ class Api
         $this->request->filter(['strip_tags']);
         // 签名校验
         $this->params = $this->request->only($arr);
+
         $this->generateSign($this->params);
     }
     /**
@@ -202,7 +203,10 @@ class Api
         // 生成签名
         $serverSign = strtoupper(hash_hmac('sha1', $stringToSign, $appSecret));
         // 签名比对
+
         if (!hash_equals($serverSign, $sign)) {
+            write_log($this->request->param(), 'sign/failed');
+            write_log($params, 'sign/failed');
             write_log('ip：'. request()->ip() .'签名校验失败：' . $stringToSign.',sign：'.$serverSign, 'sign/failed');
             $this->error(__('签名校验失败'));
         }
