@@ -36,7 +36,7 @@ class MoneyLog extends Model
         }elseif ($type == 3){
             $memo = '签到成功送人民币';
         }elseif ($type == 4){
-            $memo = '提现';
+            $memo = empty($memo) ? '提现' : '提现失败退回';
         }elseif($type == 5){
             if($field == 'money'){
                 $user->rgtime = time();
