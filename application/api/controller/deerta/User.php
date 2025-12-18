@@ -202,6 +202,9 @@ class User extends Api
         if(!$invite){
             throw new Exception('邀请码不存在');
         }
+        if($invite['status'] != 'normal'){
+            throw new Exception('邀请码已被禁用');
+        }
 
         // 邀请码下近一小时的注册数
         $invite_count = \app\common\model\User::where('refer', $invite['id'])
