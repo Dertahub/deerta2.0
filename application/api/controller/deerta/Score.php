@@ -123,11 +123,11 @@ class Score extends Api
             $order_sn = 'S' . date('mdHi') . chr(rand(65, 90)) . rand(1, 9) . chr(rand(65, 90)) . rand(100, 999);
             MoneyLog::money($userId, -$goods['score'] * $num,8,'score', $order_sn);
 
-            $goods->stock -= 1;
+            $goods->stock -= $num;
             if ($goods->stock <= 0){
                 throw new \Exception('商品库存不足！');
             }
-            $goods->sales += 1;
+            $goods->sales += $num;
             $goods->save();
 
             \app\admin\model\keerta\score\Order::create([
