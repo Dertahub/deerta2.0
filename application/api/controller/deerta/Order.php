@@ -43,7 +43,7 @@ class Order extends Api
             $this->error('产品不存在！');
         }
         $user = $this->auth->getUser();
-        lock('order_pay_'.$goods_id.'_'.$user['id'],'请勿频繁操作,请稍后再试...', 60);
+        lock('order_pay_'.$goods_id.'_'.$user['id'],'请勿频繁操作,请稍后再试...', 10);
 
         lock('order_pay_'.$goods_id,'产品锁定中,请稍后再试...', 60);
 
