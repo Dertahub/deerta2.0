@@ -157,6 +157,23 @@ class Usdt extends Backend
             }
             if($params['status'] == 1){
                 MoneyLog::money($row['user_id'], $row['money'], 1, 'usdt', $row['order_sn']);
+                // 查找是否有真是首充
+                if($row['is_first'] == 0){
+                    $first_money = $this->model->where('user_id', $row['user_id'])
+                        ->where('is_first', 1)
+                        ->where('status', 1)
+                        ->find();
+                    if(empty($first_money)){
+                        $params['is_first'] = 1;
+                        $this->model->where('user_id', $row['user_id'])
+                            ->where('is_first', 1)
+                            ->update(['is_first' => 0]);
+                    }
+                }
+            }else{
+                if($row['is_first'] == 1){
+                    $params['is_first'] = 0;
+                }
             }
 
             $result = $row->allowField(true)->save($params);
