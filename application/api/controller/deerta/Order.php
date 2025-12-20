@@ -35,7 +35,6 @@ class Order extends Api
         }
         $goods_id = $params['goods_id'];
         $amount = $params['amount'];
-        lock('order_pay_'.$goods_id,'产品锁定中,请稍后再试...', 60);
 
         $goods = \app\admin\model\keerta\goods\Goods::where('id', $goods_id)
             ->where('switch', 1)
@@ -45,6 +44,8 @@ class Order extends Api
         }
         $user = $this->auth->getUser();
         lock('order_pay_'.$goods_id.'_'.$user['id'],'请勿频繁操作,请稍后再试...', 60);
+
+        lock('order_pay_'.$goods_id,'产品锁定中,请稍后再试...', 60);
 
         try {
             $this->orderValidate($user, $goods);
