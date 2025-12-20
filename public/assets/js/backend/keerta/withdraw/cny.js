@@ -37,7 +37,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'realname', title: __('实名'), operate: false},
                         {field: 'mark', title: __('标记'), searchList: {"0":__('否'),"1":__('是')},  operate: false,formatter: Table.api.formatter.label},
                         {field: 'refer_ids', title: __('输入ID搜索伞下'),visible:false},
-                        // {field: 'updatetime', title: __('Updatetime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
                         {field: 'bank_card', title: __('Bank_card'), operate: 'LIKE'},
                         {field: 'bank_name', title: __('Bank_name'), operate: 'LIKE'},
                         {field: 'bank_deposit', title: __('Bank_deposit'), operate: 'LIKE'},
@@ -46,6 +45,26 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'actual_money', title: __('实际到账金额'), operate: 'LIKE'},
                         {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
                         {field: 'createtime', title: __('申请时间'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        // {field: 'updatetime', title: __('Updatetime'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'actual_time', title: __('操作时间'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        /*{
+                            field: 'updatetime',
+                            title: __('操作时间'),
+                            operate: 'RANGE',
+                            addclass: 'datetimerange',
+                            autocomplete: false,
+                            formatter: function(value, row, index, field) {
+                                // 先检查 status 是否存在，再判断是否为 0
+                                if (typeof row.status !== 'undefined' && row.status == 0) {
+                                    return '';
+                                }
+                                // 如果值为空也直接返回空
+                                if (!value) {
+                                    return '';
+                                }
+                                return Table.api.formatter.datetime.call(this, value, row, index, field);
+                            }
+                        },*/
                         // {field: 'reason', title: __('Reason'), operate: 'LIKE', table: table, class: 'autocontent', formatter: Table.api.formatter.content},
                         {
                             field: 'operate',

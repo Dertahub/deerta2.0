@@ -142,6 +142,7 @@ class Cny extends Backend
             if($params['status'] == 2){
                 MoneyLog::money($row['user_id'], $row['money'], 4, 'withdraw_money', $row['order_sn'], 1);
             }
+            $params['actual_time'] = time();
             $result = $row->allowField(true)->save($params);
             Db::commit();
         } catch (ValidateException|PDOException|Exception $e) {

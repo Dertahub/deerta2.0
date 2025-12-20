@@ -49,6 +49,25 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'actual_money', title: __('实际到账金额'), operate: 'LIKE'},
                         {field: 'status', title: __('Status'), searchList: {"0":__('Status 0'),"1":__('Status 1'),"2":__('Status 2')}, formatter: Table.api.formatter.status},
                         {field: 'createtime', title: __('申请时间'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        {field: 'actual_time', title: __('操作时间'), operate:'RANGE', addclass:'datetimerange', autocomplete:false, formatter: Table.api.formatter.datetime},
+                        /*{
+                            field: 'updatetime',
+                            title: __('操作时间'),
+                            operate: 'RANGE',
+                            addclass: 'datetimerange',
+                            autocomplete: false,
+                            formatter: function(value, row, index, field) {
+                                // 先检查 status 是否存在，再判断是否为 0
+                                if (typeof row.status !== 'undefined' && row.status == 0) {
+                                    return '';
+                                }
+                                // 如果值为空也直接返回空
+                                if (!value) {
+                                    return '';
+                                }
+                                return Table.api.formatter.datetime.call(this, value, row, index, field);
+                            }
+                        },*/
                         {
                             field: 'operate',
                             title: __('Operate'),

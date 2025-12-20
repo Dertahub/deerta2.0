@@ -34,7 +34,7 @@ class Realname extends Api
     {
         $params = $this->request->post();
         $userId = $this->auth->id;
-        lock('realName' . $userId);
+        lock('realName' . $userId,'请勿频繁提交',60);
 
         $param = ['surname','idcard','idcard_image','idcard_image2','signature'];
         $this->paramValidate($param);
