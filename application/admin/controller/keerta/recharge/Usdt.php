@@ -82,19 +82,19 @@ class Usdt extends Backend
                 'user_id' => ['in', $user_ids]
             ];
 
-            $total_money = $this->model
+            $total_money = round($this->model
                 ->where($where)
                 ->where($where2)
-                ->sum('money');
+                ->sum('money'), 2);
             $first_count = $this->model
                 ->where($where)
                 ->where($where2)
                 ->count();
 
-            $total_money2 = $this->model
+            $total_money2 = round($this->model
                 ->where($where)
                 ->where($where3)
-                ->sum('money');
+                ->sum('money'),2);
             $first_count2 = $this->model
                 ->where($where)
                 ->where($where3)
