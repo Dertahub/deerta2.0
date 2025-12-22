@@ -26,7 +26,12 @@ class Test extends Command
     protected function execute(Input $input, Output $output)
     {
         $user = User::where('id',445601)->find();
-        $this->teamLevelUpdate($user);
+        $team_id = $this->teamLevelUpdate($user);
+        if($team_id > $user['team_id']){
+            $user->team_id = $team_id;
+            $user->save();
+            echo $user['id'].'团队等级更新成功'.$team_id ."\n";
+        }
         exit();
     }
     public function teamLevelUpdate($team_user)
@@ -46,12 +51,11 @@ class Test extends Command
                 ->where('self_invest_money','>',0)
                 ->column('id');
 
-            var_dump($count, $team_count,$team_user);exit();
 
-            /*if($count > 0 && $team_count > 0){
-                $team = Team::where('direct_people','<', $count)
-                    ->where('team_people', '<', $team_count)
-                    ->where('total_building','<',$team_user->team_invest_money)
+            if($count > 0 && $team_count > 0){
+                $team = Team::where('direct_people','<=', $count)
+                    ->where('team_people', '<=', $team_count)
+                    ->where('total_building','<=',$team_user->team_invest_money)
                     ->order('id desc')
                     ->find();
                 if($team['id'] > $team_user['team_id']){
@@ -64,7 +68,7 @@ class Test extends Command
                     ]);
                     $team_id = $team['id'];
                 }
-            }*/
+            }
         }
         return $team_id;
     }
