@@ -47,10 +47,6 @@ class Test extends Command
             $team_count = \app\common\model\User::where("FIND_IN_SET({$teamUid}, refer_path)")
                 ->where('self_invest_money','>',0)
                 ->count();
-            $team_user = \app\common\model\User::where("FIND_IN_SET({$teamUid}, refer_path)")
-                ->where('self_invest_money','>',0)
-                ->column('id');
-
 
             if($count > 0 && $team_count > 0){
                 $team = Team::where('direct_people','<=', $count)
