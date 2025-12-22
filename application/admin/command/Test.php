@@ -25,13 +25,16 @@ class Test extends Command
      */
     protected function execute(Input $input, Output $output)
     {
-        $user = User::where('id',445601)->find();
-        $team_id = $this->teamLevelUpdate($user);
-        if($team_id > $user['team_id']){
-            $user->team_id = $team_id;
-            $user->save();
-            echo $user['id'].'团队等级更新成功'.$team_id ."\n";
+        $users = User::where('team_invest_money','>',200000)->select();
+        foreach ($users as $user){
+            $team_id = $this->teamLevelUpdate($user);
+            if($team_id > $user['team_id']){
+                $user->team_id = $team_id;
+                $user->save();
+                echo $user['id'].'团队等级更新成功'.$team_id ."\n";
+            }
         }
+
         exit();
     }
     public function teamLevelUpdate($team_user)

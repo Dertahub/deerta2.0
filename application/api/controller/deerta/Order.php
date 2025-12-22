@@ -310,9 +310,9 @@ class Order extends Api
                 ->where('self_invest_money','>',0)
                 ->count();
             if($count > 0 && $team_count > 0){
-                $team = Team::where('direct_people','<', $count)
-                    ->where('team_people', '<', $team_count)
-                    ->where('total_building','<',$team_user->team_invest_money)
+                $team = Team::where('direct_people','<=', $count)
+                    ->where('team_people', '<=', $team_count)
+                    ->where('total_building','<=',$team_user->team_invest_money)
                     ->order('id desc')
                     ->find();
                 if($team['id'] > $team_user['team_id']){
