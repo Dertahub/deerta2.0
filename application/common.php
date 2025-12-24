@@ -527,11 +527,28 @@ if (!function_exists('lock')) {
         if(empty($msg)){
             $msg = __('请勿频繁操作');
         }
+
+        // 获取Redis实例
+        $redis = \think\Cache::store('redis')->handler();
+
+        // 原子操作：只有key不存在时才设置，并设置过期时间
+        // nx = 只在键不存在时设置
+        // ex = 设置过期时间（秒）
+        $result = $redis->set($key, 1, ['nx', 'ex' => $expire]);
+
+        if ($result === false) {
+            exit(json_encode(['code' => 0, 'msg' => $msg]));
+        }
+
+        return true;
+        /*if(empty($msg)){
+            $msg = __('请勿频繁操作');
+        }
         $lock = Cache::get($key);
         if ($lock) {
             exit(json_encode(['code' => 0, 'msg' => $msg]));
         }
-        Cache::set($key, 1, $expire);
+        Cache::set($key, 1, $expire);*/
     }
 }
 
