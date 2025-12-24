@@ -605,4 +605,36 @@ if (!function_exists('write_log')) {
 
         return true;
     }
+    if (!function_exists('replace_content_file_url')) {
+        function replace_content_file_url($content)
+        {
+            // 使用正则表达式替换 img 标签的 src
+            $content = preg_replace_callback(
+                '/<img[^>]+src="([^"]+)"[^>]*>/i',
+                function ($matches) {
+                    $src = $matches[1];
+                    $newSrc = cdnurl($src, true);
+                    return str_replace($src, $newSrc, $matches[0]);
+                },
+                $content
+            );
+
+            // 使用正则表达式替换 a 标签的 href
+            $content = preg_replace_callback(
+                '/<a[^>]+href="([^"]+)"[^>]*>/i',
+                function ($matches) {
+                    $href = $matches[1];
+                    // 如果不是以 / 或 http 开头
+                    if (!preg_match("/^\//", $href) && !preg_match("/^http/", $href)) {
+                        $newHref = cdnurl($href, true);
+                        return str_replace($href, $newHref, $matches[0]);
+                    }
+                    return $matches[0];
+                },
+                $content
+            );
+
+            return $content;
+        }
+    }
 }

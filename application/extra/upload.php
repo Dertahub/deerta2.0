@@ -11,7 +11,8 @@ return [
     /**
      * CDN地址
      */
-    'cdnurl'    => Env::get('app.UPLOAD_URL', false),
+//    'cdnurl'    => Env::get('app.UPLOAD_URL', false),
+    'cdnurl'    => '',
     /**
      * 文件保存格式
      */

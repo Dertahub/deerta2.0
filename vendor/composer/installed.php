@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'fastadminnet/fastadmin',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '2a48badbc365c2e9bb09506f21bd11fecc87d2cc',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '4564d1ef18f83376eac68cb9cd0a107ff6050b59',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -28,6 +28,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'electrolinux/phpquery' => array(
+            'pretty_version' => '0.9.6',
+            'version' => '0.9.6.0',
+            'reference' => '6cb8afcfe8cd4ce45f2f8c27d561383037c27a3a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../electrolinux/phpquery',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'ezyang/htmlpurifier' => array(
             'pretty_version' => 'v4.18.0',
             'version' => '4.18.0.0',
@@ -38,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'fastadminnet/fastadmin' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '2a48badbc365c2e9bb09506f21bd11fecc87d2cc',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '4564d1ef18f83376eac68cb9cd0a107ff6050b59',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

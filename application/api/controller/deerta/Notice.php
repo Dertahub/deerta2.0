@@ -86,6 +86,7 @@ class Notice extends Api
         if (!$detail) {
             $this->error('资讯不存在');
         }
+        $detail['content'] = $detail['content'] ? replace_content_file_url($detail['content']) : '';
 
         $this->success('获取成功', $detail);
     }

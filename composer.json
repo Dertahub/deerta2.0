@@ -30,7 +30,8 @@
         "ext-curl": "*",
         "ext-pdo": "*",
         "ext-bcmath": "*",
-        "james-heinrich/getid3": "^1.9"
+        "james-heinrich/getid3": "^1.9",
+        "electrolinux/phpquery": "0.9.6"
     },
     "config": {
         "preferred-install": "dist",
