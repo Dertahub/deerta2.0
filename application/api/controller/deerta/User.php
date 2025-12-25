@@ -178,13 +178,13 @@ class User extends Api
      */
     public function registerValidate()
     {
-        $ip = request()->ip();
+        /*$ip = request()->ip();
         $user = \app\common\model\User::where('joinip', $ip)
             ->whereTime('createtime', 'today')
             ->count();
         if($user >= 3){
             throw new Exception('当前ip今日注册次数过多');
-        }
+        }*/
 
         // 设备唯一标识验证
         $device = \app\common\model\User::where('device_id', $this->params['device_id'])
