@@ -560,7 +560,13 @@ if (!function_exists('unlock')) {
      */
     function unlock($key)
     {
-        Cache::rm($key);
+        // 获取Redis实例
+        $redis = \think\Cache::store('redis')->handler();
+
+        // 删除锁键
+        $result = $redis->del($key);
+
+        return $result > 0; // 返回是否成功删除
     }
 }
 if (!function_exists('over_time')) {
