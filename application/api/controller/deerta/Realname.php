@@ -48,7 +48,7 @@ class Realname extends Api
             $this->error($e->getMessage());
         }
         $idcard = \app\admin\model\keerta\Realname::where('user_id', $userId)
-            ->where('status',0)
+            ->whereIn('status',[0,1])
             ->find();
         if ($idcard){
             $this->error('正在审核中，请耐心等待审核');

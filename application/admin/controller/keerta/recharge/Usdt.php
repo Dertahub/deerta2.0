@@ -147,6 +147,7 @@ class Usdt extends Backend
         }
         $params = $this->preExcludeFields($params);
         $result = false;
+        lock('recharge'.$row['user_id'],'', 60);
         Db::startTrans();
         try {
             //是否采用模型验证
