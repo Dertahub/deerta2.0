@@ -37,6 +37,7 @@ class Notice extends Api
             $this->success('暂无数据',null);
         }
         $pop['image'] = $pop['image'] ? cdnurl($pop['image'], true) : '';
+        $pop['content'] = $pop['content'] ? replace_content_file_url($pop['content']) : '';
 
         $this->success('获取成功', $pop);
     }
