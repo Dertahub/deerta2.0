@@ -163,7 +163,7 @@ class Withdraw extends Api
         if ($params['money'] % $config['multiple'] != 0){
             $this->error('提现金额必须为'.$config['multiple'].'的倍数！');
         }
-        lock('withdraw_'.$user->id, '请勿频繁提交', 10);
+        lock('withdraw_'.$user->id, '请勿频繁提交', 60);
 
         if($type == 'withdraw_money'){
             $count = Cny::where('user_id', $user['id'])

@@ -24,4 +24,5 @@ return [
     'app\admin\command\Xdl',
     'app\admin\command\ConfirmReceipt',
     'app\admin\command\Dsorb',
+    'app\admin\command\Check',
 ];
