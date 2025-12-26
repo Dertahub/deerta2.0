@@ -34,7 +34,7 @@ class Notice extends Api
             ->field('id,title,image,content')
             ->find();
         if (!$pop){
-            $this->success('暂无数据',[]);
+            $this->success('暂无数据',null);
         }
         $pop['image'] = $pop['image'] ? cdnurl($pop['image'], true) : '';
 
