@@ -219,6 +219,10 @@
             <span class="withdrawal-text">实名认证待审核：</span>
             <span class="withdrawal-amount">({$homeDate.realname|default=0})</span>
         </a>
+        <a href="{:url('check/index?ref=addtabs')}" class="btn-back-home" style="color:white" target="_parent">
+            <span class="withdrawal-text">数据检测：</span>
+            <span class="withdrawal-amount">(0)</span>
+        </a>
     </div>
 
     {if $Think.config.fastadmin.multiplenav}
